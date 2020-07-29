@@ -10,7 +10,7 @@ import ProductList from './ProductListPage'
 const Search = () => {
   const [productName, setProductName] = useState('')
   const [result, setResult] = useState()
-  const [toProductList, setToProductist] = useState(false)
+  const [toProductList, setToProductList] = useState(false)
 
   const handleSubmit = async (event) => {
     try {
@@ -20,12 +20,12 @@ const Search = () => {
           name: productName
         })
       setResult(result.data.results)
-      // trigger ReactRouter to render the product list component
-      // history.push({ pathname: `/ productlist / ${productName} `, state: { result: result } })
+      setToProductList(true)
     } catch (error) {
       console.error(error.message)
     }
   }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -43,10 +43,10 @@ const Search = () => {
           }}
         />
       </form>
-      <ProductList searchResults={result} />
+      {/* <ProductList result={result} /> */}
       {toProductList
-        ? <Redirect to={`/productlist/${productName}`} />
-        : <Redirect to='/' />}
+        ? <Redirect to='/productlist/' />
+        : null}
     </div>
   )
 }

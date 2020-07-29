@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid } from '@material-ui/core'
 
-const ProductList = ({ searchResults }) => {
+const ProductList = ({ result }) => {
   const containerStyles = {
     height: '100vh',
     overflow: 'auto',
@@ -11,9 +11,13 @@ const ProductList = ({ searchResults }) => {
   return (
     <Grid container direction='column'>
       <div style={containerStyles}>
-        {!searchResults ? (
-          <h1>No results found</h1>
-        ) : (<h1>{searchResults[0].name}</h1>)}
+        {!result
+          ? (
+            <h1>No results found</h1>
+          )
+          : (
+            <h1>{result[0].name}</h1>
+          )}
       </div>
     </Grid>
   )
