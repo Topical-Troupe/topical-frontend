@@ -1,5 +1,6 @@
 import React from 'react'
-import { Grid, Typography, Box } from '@material-ui/core'
+import { Grid, Typography, Box, colors, TableContainer } from '@material-ui/core'
+import BarcodeSearch from './BarcodeSearch'
 import NameSearch from './NameSearch'
 import QuaggaDisplay from './QuaggaDisplay'
 

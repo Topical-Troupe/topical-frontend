@@ -12,9 +12,6 @@ function ProfilePage () {
     <div>
       <Grid container direction='column'>
         <div style={containerStyles}>
-          <Typography variant='h2' gutterBottom>
-        Topical
-          </Typography>
           <Box m={6}>
             <Typography variant='h4' gutterBottom>
         Your Profile Page
