@@ -4,13 +4,16 @@ import BarcodeSearch from './BarcodeSearch'
 import NameSearch from './NameSearch'
 import QuaggaDisplay from './QuaggaDisplay'
 
-const Home = () => {
+const Home = ({ setSearchResults }) => {
   const containerStyles = {
     height: '100vh',
     overflow: 'auto',
     textAlign: 'center',
     padding: '5vh'
   }
+
+  const onSearchResults = (results) => setSearchResults(results)
+
   return (
     <Grid container direction='column'>
       <div style={containerStyles}>
@@ -26,7 +29,7 @@ const Home = () => {
         <Typography variant='h4' gutterBottom>
         Or search by product name:
         </Typography>
-        <NameSearch />
+        <NameSearch onSearchResults={onSearchResults} />
       </div>
     </Grid>
   )

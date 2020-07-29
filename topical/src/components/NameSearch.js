@@ -7,7 +7,7 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import ProductList from './ProductListPage'
 
-const Search = () => {
+const Search = ({ onSearchResults }) => {
   const [productName, setProductName] = useState('')
   const [result, setResult] = useState()
   const [toProductList, setToProductList] = useState(false)
@@ -21,6 +21,7 @@ const Search = () => {
         })
       setResult(result.data.results)
       setToProductList(true)
+      onSearchResults(result.data.results)
     } catch (error) {
       console.error(error.message)
     }

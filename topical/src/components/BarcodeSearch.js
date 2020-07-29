@@ -13,7 +13,7 @@ const BarcodeSearch = ({ result }) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     axios
-      .get(`https://shopical.herokuapp.com/api/search?upc=${result}`, {
+      .get(`https://shopical.herokuapp.com/api/search?upc=${upc}`, {
         upc: upc
       }).then(res => console.log(res))
   }
@@ -22,7 +22,7 @@ const BarcodeSearch = ({ result }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <TextField
-          value={result}
+          value={upc}
           onChange={event => setUpc(event.target.value)}
           InputProps={{
             endAdornment: (
