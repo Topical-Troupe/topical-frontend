@@ -44,7 +44,6 @@ const Search = ({ onSearchResults }) => {
           }}
         />
       </form>
-      {/* <ProductList result={result} /> */}
       {toProductList
         ? <Redirect to='/productlist/' />
         : null}

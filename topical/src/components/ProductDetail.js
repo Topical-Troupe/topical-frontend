@@ -2,9 +2,8 @@ import React from 'react'
 import { Grid, Typography, CardMedia } from '@material-ui/core'
 import List from '@material-ui/core/List'
 
-function Product (props) {
-//   const [name, setName] = useState('')
-//   const [imageURL, setimageURL] = useState('')
+function ProductDetail (props) {
+
   const results = this.props.results
 
   return (
@@ -27,4 +26,5 @@ function Product (props) {
   )
 }
 
-export default Product
+// This data needs upc--will make API call with that, like in barcode scanner 
+export default ProductDetail

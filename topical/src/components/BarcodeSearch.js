@@ -14,7 +14,10 @@ const BarcodeSearch = ({ result }) => {
     event.preventDefault()
     axios
       .get(`https://shopical.herokuapp.com/api/search?upc=${upc}`, {
-        upc: upc
+        headers: {
+          upc: upc,
+          Authorization: 'Token 29174f9636c35eb521cb2ee74e7558dd5ecb3486'
+        }
       }).then(res => console.log(res))
   }
 
