@@ -3,8 +3,8 @@ import { Grid } from '@material-ui/core'
 import ProductCard from './ProductCard'
 
 const ProductList = ({ result, upc }) => {
-  const history = useHistory()
-  const [itemId, setItemId] = useState('')
+  // const history = useHistory()
+  // const [itemId, setItemId] = useState('')
   const containerStyles = {
     height: '100vh',
     overflow: 'auto',
@@ -13,11 +13,11 @@ const ProductList = ({ result, upc }) => {
     alignItems: 'center'
   }
   console.log(result)
-  const handleClick = (id) => e => {
-    e.preventDefault()
-    console.log(id)
-    history.push(`/productdetail/${upc}`)
-  }
+  // const handleClick = (id) => e => {
+  //   e.preventDefault()
+  //   console.log(id)
+  //   history.push(`/productdetail/${upc}`)
+  // }
 
   return (
     <Grid container direction='column'>

@@ -1,17 +1,28 @@
-import React from 'react'
-import { Grid, Typography, CardMedia } from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
+import { Grid, Typography, CardMedia, ListItem } from '@material-ui/core'
 import List from '@material-ui/core/List'
 
 function ProductDetail ({ result }) {
-//   const [name, setName] = useState('')
-//   const [imageURL, setimageURL] = useState('')
+  const [ingredients, setIngredients] = useState('')
   const containerStyles = {
     height: '100vh',
     overflow: 'auto',
     textAlign: 'center',
     padding: '5vh'
   }
-  console.log('fromProductdetail:', result)
+  const axios = require('axios')
+  useEffect(() => {
+    try {
+      return axios.get(('https://shopical.herokuapp.com/api/product/<upc>/ingredients/'), {
+        violations: '',
+        ingredient_list: ingredients
+      })
+      // setIngredients()
+    } catch (error) {
+      console.error(error)
+    }
+  })
+  // console.log('fromProductdetail:', result)
   return (
     <Grid container direction='column'>
       <div style={containerStyles}>
@@ -25,18 +36,14 @@ function ProductDetail ({ result }) {
               <img src={result.image_url} />
             </div>
           )}
-        {/* <Typography variant='h4' gutterBottom>
-          {results.name}
-        </Typography>
-        <Typography variant='h5' gutterBottom>
-          {results.description}
-        </Typography>
-        <CardMedia>
-          {results.imageURL}
-        </CardMedia>
-        <List>
-          {results.ingredients}
-        </List> */}
+        <div>
+          <div>
+            {ingredients.map((ingredient) => (
+              <p key={ingredient.id}>
+                {ingredient}
+              </p>))}
+          </div>
+        </div>
       </div>
     </Grid>
   )
