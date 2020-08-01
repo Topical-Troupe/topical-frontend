@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './App.css'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom'
 import BarcodeSearch from './components/BarcodeSearch'
 // import NameSearch from './components/NameSearch'
 // import { spacing } from '@material-ui/system'
@@ -16,11 +16,12 @@ import ProductDetail from './components/ProductDetail'
 
 function App ({ result }) {
   const [searchResults, setSearchResults] = useState(null)
+  const history = useHistory()
 
   return (
     <div>
       <ThemeProvider theme={Theme}>
-        <Router>
+        <Router history={history}>
           <Navigation />
           <Switch>
             <Route path='/' exact>
