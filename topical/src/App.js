@@ -13,6 +13,7 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import Theme from './components/Theme'
 import ProductList from './components/ProductListPage'
 import ProductDetail from './components/ProductDetail'
+import ProductCard from './components/ProductCard'
 
 function App ({ result }) {
   const [searchResults, setSearchResults] = useState(null)
@@ -39,6 +40,7 @@ function App ({ result }) {
             <Route path='/productlist/'>
               <ProductList result={searchResults} />
             </Route>
+            <ProductCard path='/product/:id' />
           </Switch>
         </Router>
       </ThemeProvider>

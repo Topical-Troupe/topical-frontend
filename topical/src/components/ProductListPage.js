@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Grid } from '@material-ui/core'
-import { useHistory } from 'react-router-dom'
+import ProductCard from './ProductCard'
 
 const ProductList = ({ result, upc }) => {
   const history = useHistory()
@@ -22,25 +22,26 @@ const ProductList = ({ result, upc }) => {
   return (
     <Grid container direction='column'>
       <div style={containerStyles}>
-        <div>
-          <button>
-            {!result
-              ? (
-                <h1>No results found</h1>
-              )
-              : (
-                <div>
-                  {result.map((item) => (
-                    <p key={item.id} onClick={handleClick(item.upc)}>
-                      {item.name}
-                      <img src={item.image_url} />
-                      {item.upc}
-                    </p>
-                  ))}
-                </div>
+        {!result
+          ? (
+            <h1>No results found</h1>
+          )
+          : (
+            <div>
+              {result.map((item) => {
+                return (
+                  <ProductCard
+                    key={item.upc}
+                    name={item.name}
+                    image={item.image_url}
+                    upc={item.upc}
+                  />
+                )
+              }
+
               )}
-          </button>
-        </div>
+            </div>
+          )}
       </div>
     </Grid>
   )
