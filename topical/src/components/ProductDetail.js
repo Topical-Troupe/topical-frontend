@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Grid, Typography, CardMedia, ListItem } from '@material-ui/core'
+import axios from 'axios'
 
 function ProductDetail ({ result }) {
   const [ingredients, setIngredients] = useState('')
@@ -9,23 +10,22 @@ function ProductDetail ({ result }) {
     textAlign: 'center',
     padding: '5vh'
   }
-  const axios = require('axios')
-  useEffect(() => {
+  // useEffect(async () => {
+  const getIngredients = async (event) => {
     try {
-      return axios.get((`https://shopical.herokuapp.com/api/product/${result.upc}/ingredients/`), {
-        headers: {
-          Authorization: 'Token 29174f9636c35eb521cb2ee74e7558dd5ecb3486'
-        },
-        // violations: '',
-        ingredient_list: ingredients
-      })
-      // setIngredients()
+      const result = await axios
+      event.preventDefault()
+        .get(`https://shopical.herokuapp.com/api/product/${result.upc}/ingredients/`, {
+          headers: {
+            Authorization: 'Token 29174f9636c35eb521cb2ee74e7558dd5ecb3486'
+          }
+        })
+      setIngredients(result)
+      console.log(result)
     } catch (error) {
       console.error(error)
     }
-  })
-  // console.log('fromProductdetail:', result)
-  console.log(ingredient_list)
+  }
   return (
     <Grid container direction='column'>
       <div style={containerStyles}>
