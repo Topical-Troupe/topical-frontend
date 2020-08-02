@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Grid, Typography, CardMedia, ListItem } from '@material-ui/core'
-import List from '@material-ui/core/List'
 
 function ProductDetail ({ result }) {
   const [ingredients, setIngredients] = useState('')
@@ -13,8 +12,11 @@ function ProductDetail ({ result }) {
   const axios = require('axios')
   useEffect(() => {
     try {
-      return axios.get(('https://shopical.herokuapp.com/api/product/<upc>/ingredients/'), {
-        violations: '',
+      return axios.get((`https://shopical.herokuapp.com/api/product/${result.upc}/ingredients/`), {
+        headers: {
+          Authorization: 'Token 29174f9636c35eb521cb2ee74e7558dd5ecb3486'
+        },
+        // violations: '',
         ingredient_list: ingredients
       })
       // setIngredients()
@@ -23,6 +25,7 @@ function ProductDetail ({ result }) {
     }
   })
   // console.log('fromProductdetail:', result)
+  console.log(ingredient_list)
   return (
     <Grid container direction='column'>
       <div style={containerStyles}>
@@ -37,12 +40,12 @@ function ProductDetail ({ result }) {
             </div>
           )}
         <div>
-          <div>
+          {/* <div>
             {ingredients.map((ingredient) => (
               <p key={ingredient.id}>
                 {ingredient}
               </p>))}
-          </div>
+          </div> */}
         </div>
       </div>
     </Grid>
